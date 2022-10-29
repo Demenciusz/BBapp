@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "304533883144",
+    "project_id": "zaliczenie-1ce25",
+    "storage_bucket": "zaliczenie-1ce25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304533883144:android:1780b4c5ffbc64a5c544bd",
+        "android_client_info": {
+          "package_name": "com.example.zaliczenie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304533883144-e7vd2gc3ubp47oefsv1enfk16fo8mrib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlqQ2Ow39azJ7S4aB_qMsfZYVBdSTYT30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304533883144-e7vd2gc3ubp47oefsv1enfk16fo8mrib.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "304533883144-072m55i0uinkduujmrnvo66bho5tnurq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.zaliczenie"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
