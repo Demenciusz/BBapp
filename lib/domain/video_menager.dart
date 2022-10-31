@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../constants.dart';
 
 class VideoListMenager {
-  Future<List<Video>> makeList() async {
+  static Future<List<Video>> makeList() async {
     Uri url = Uri.parse(ytUrl);
     http.Response response = await http.get(url);
     List<Video> videos = [];
@@ -29,7 +29,7 @@ class VideoListMenager {
     return videos;
   }
 
-  void openVideo(String link) async {
+  static void openVideo(String link) async {
     Uri uri = Uri.parse('https://www.youtube.com/watch?v=' + link);
     if (!await launchUrl(
       uri,

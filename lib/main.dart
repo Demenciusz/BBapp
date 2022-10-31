@@ -9,8 +9,6 @@ import 'cubit/page_cubit.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

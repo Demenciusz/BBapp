@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/video.dart';
+import 'package:zaliczenie/pages/homePage/widgets/video_list.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
 
 import '../../domain/firebase_auth_controller.dart';
@@ -10,13 +11,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Strona główna'),
+        backgroundColor: Colors.red,
+        centerTitle: true,
+      ),
       drawer: MyDrawer(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              VideoList(height: 480),
               Text('elo'),
               TextButton(
                   onPressed: () async {

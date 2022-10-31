@@ -89,8 +89,10 @@ class ButtonDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: MediaQuery.of(context).size.width,
       height: 70,
       child: TextButton(
+        style: ButtonStyle(),
         child: Text(
           text,
           style: TextStyle(fontSize: 30, color: Colors.black),

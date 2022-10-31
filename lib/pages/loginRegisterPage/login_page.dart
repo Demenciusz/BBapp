@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/services.dart';
 import 'package:zaliczenie/domain/firebase_auth_controller.dart';
+import 'package:zaliczenie/pages/loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/loginRegisterPage/widgets/textbutton.dart';
 import 'package:zaliczenie/pages/loginRegisterPage/widgets/textfield.dart';
 
@@ -15,6 +16,13 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final textcontroller = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -28,9 +36,12 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Center(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height - 56,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -72,7 +83,10 @@ class _LoginPageState extends State<LoginPage> {
               MyTextButton(
                   screenWidth: screenWidth,
                   onPressed: (() {
-                    Navigator.pushNamed(context, '/register');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterPage()));
                   }),
                   content: 'REJESTRACJA'),
             ],

@@ -82,13 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('YT'),
-          ],
-        ),
+        backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
         child: Center(

@@ -1,0 +1,44 @@
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
+import 'package:zaliczenie/domain/video_menager.dart';
+
+class Thumbnail extends StatelessWidget {
+  const Thumbnail({
+    required this.link,
+    required this.size,
+    required this.thumnbailUrl,
+    required this.title,
+  });
+  final String link;
+  final String thumnbailUrl;
+  final String title;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size * 0.93,
+      height: 300,
+      child: Column(
+        children: [
+          GestureDetector(
+            onLongPress: () => VideoListMenager.openVideo(link),
+            //onTap: () => VideoListMenager.openVideo(link),
+            child: Image.network(
+              height: 300,
+              thumnbailUrl,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(title),
+          SizedBox(
+            height: 35,
+          ),
+        ],
+      ),
+    );
+  }
+}
