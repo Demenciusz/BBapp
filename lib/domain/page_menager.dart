@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/cubit/page_cubit.dart';
-import 'package:zaliczenie/pages/loginRegisterPage/login_page.dart';
+import 'package:zaliczenie/pages/0loginRegisterPage/login_page.dart';
 import 'package:flutter_bloc/src/bloc_builder.dart';
-import 'package:zaliczenie/pages/homePage/home_page.dart';
+import 'package:zaliczenie/pages/1homePage/home_page.dart';
 
 Widget PageMenager() {
   return BlocBuilder<PageCubit, PageState>(

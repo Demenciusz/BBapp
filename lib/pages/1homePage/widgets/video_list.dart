@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/video.dart';
 import 'package:zaliczenie/domain/video_menager.dart';
-import 'package:zaliczenie/pages/homePage/widgets/thumbnail.dart';
+import 'package:zaliczenie/pages/1homePage/widgets/thumbnail.dart';
 
 class VideoList extends StatelessWidget {
   const VideoList({required this.height});
