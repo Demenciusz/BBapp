@@ -95,7 +95,10 @@ class ButtonDrawer extends StatelessWidget {
         style: ButtonStyle(),
         child: Text(
           text,
-          style: TextStyle(fontSize: 30, color: Colors.black),
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.red,
+          ),
         ),
         onPressed: onPressed,
       ),

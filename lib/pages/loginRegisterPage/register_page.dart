@@ -251,12 +251,29 @@ class _RegisterPageState extends State<RegisterPage> {
                                   ],
                                 )));
                       } else {
-                        AuthController().register(
-                          email: emailController.text,
-                          password: passwordController1.text,
-                          name: nameController.text,
-                          birth: '$day/$month/$year',
-                        );
+                        try {
+                          AuthController().register(
+                            email: emailController.text,
+                            password: passwordController1.text,
+                            name: nameController.text,
+                            birth: '$day/$month/$year',
+                          );
+                          Navigator.pop(context);
+                        } catch (e) {
+                          showDialog(
+                              context: context,
+                              builder: ((context) => AlertDialog(
+                                    title: Text('Błąd'),
+                                    content: Text('Błąd podczas rejestracji'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: (() {
+                                            Navigator.pop(context);
+                                          }),
+                                          child: Text('OK'))
+                                    ],
+                                  )));
+                        }
                       }
                     });
                   }),
