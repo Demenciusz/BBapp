@@ -7,7 +7,7 @@ import 'package:zaliczenie/pages/1homePage/home_page.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/login_page.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/2profilePage/profile_page.dart';
-import 'cubit/page_cubit.dart';
+import 'cubit/page/page_cubit.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -47,7 +47,7 @@ class PageBuilder extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return BlocBuilder<PageCubit, PageState>(builder: ((context, state) {
-            print(state);
+            String uid;
             if (state is HomePageState) {
               return HomePage();
             } else if (state is ProfilePageState) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/firebase_auth_controller.dart';
-import '../../cubit/page_cubit.dart';
+import '../../cubit/page/page_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyDrawer extends StatelessWidget {
