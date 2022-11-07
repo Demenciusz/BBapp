@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zaliczenie/domain/profile_menager.dart';
+import 'package:zaliczenie/pages/2profilePage/widgets/profileDescription.dart';
 
 import 'package:zaliczenie/pages/2profilePage/widgets/profilePhoto.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
@@ -38,6 +41,22 @@ class _ProfilePageState extends State<ProfilePage> {
               width: MediaQuery.of(context).size.width * 0.2,
               uid: uid,
             ),
+            TextButton(
+              child: Text('Zmien'),
+              onPressed: () => ProfileMenager().editPhoto(
+                uid: uid,
+              ),
+            ),
+            ProfileDescription(uid: uid),
+            TextButton(
+                onPressed: () async {
+                  final instance = FirebaseFirestore.instance;
+                  CollectionReference col = instance.collection('Users');
+                  DocumentSnapshot snapshot = await col.doc(uid).get();
+                  var data = snapshot.data() as Map;
+                  print(data['description']);
+                },
+                child: Text('poka'))
           ],
         ),
       ),

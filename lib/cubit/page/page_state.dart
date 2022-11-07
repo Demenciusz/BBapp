@@ -12,3 +12,5 @@ class ChatPageState extends PageState {}
 class DicePageState extends PageState {}
 
 class CharactersPageState extends PageState {}
+
+class EditProfilePageState extends PageState {}

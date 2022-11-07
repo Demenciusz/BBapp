@@ -10,4 +10,5 @@ class PageCubit extends Cubit<PageState> {
   void chatPage() => emit(ChatPageState());
   void dicePage() => emit(DicePageState());
   void charactersPage() => emit(CharactersPageState());
+  void editProfilePage() => emit(EditProfilePageState());
 }

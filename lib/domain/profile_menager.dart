@@ -6,8 +6,8 @@ import 'package:zaliczenie/domain/photo_menager.dart';
 class ProfileMenager {
   Future<void> editPhoto({
     required String uid,
-    required PhotoMenager photoMenager,
   }) async {
+    PhotoMenager photoMenager = PhotoMenager();
     final profilePhoto = await FilePicker.platform.pickFiles(
         allowMultiple: false,
         type: FileType.custom,
@@ -27,6 +27,10 @@ class ProfileMenager {
         .collection('Users')
         .doc(uid)
         .update({'description': description});
+  }
+
+  Future<String> displayDescription({required String uid}) async {
+    return '1';
   }
 
   Future<void> editUserName() async {}
