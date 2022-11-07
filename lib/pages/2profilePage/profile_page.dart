@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:zaliczenie/pages/2profilePage/widgets/profilePhoto.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
@@ -19,7 +18,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     user = auth.currentUser;
     uid = user!.uid;

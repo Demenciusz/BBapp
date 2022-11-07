@@ -47,7 +47,6 @@ class PageBuilder extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return BlocBuilder<PageCubit, PageState>(builder: ((context, state) {
-            String uid;
             if (state is HomePageState) {
               return HomePage();
             } else if (state is ProfilePageState) {

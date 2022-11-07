@@ -24,12 +24,6 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               VideoList(height: 480),
-              Text('elo'),
-              TextButton(
-                  onPressed: () async {
-                    await AuthController().signOut();
-                  },
-                  child: Text('nara'))
             ],
           ),
         ),
