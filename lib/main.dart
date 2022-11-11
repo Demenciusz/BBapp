@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 import 'package:zaliczenie/pages/5charactersPage/characters_page.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/1homePage/home_page.dart';
@@ -23,13 +24,21 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Roboto',
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.red,
+        ),
+      ),
       home: BlocProvider(
-        create: (context) => PageCubit(),
-        child: const PageBuilder(),
+        create: (context) => EditModeCubit(),
+        child: BlocProvider(
+          create: (context) => PageCubit(),
+          child: const PageBuilder(),
+        ),
       ),
     );
   }

@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/profile_menager.dart';
-import 'package:zaliczenie/pages/2profilePage/widgets/profileDescription.dart';
+import 'package:zaliczenie/pages/2profilePage/widgets/profileInfo.dart';
 
 import 'package:zaliczenie/pages/2profilePage/widgets/profilePhoto.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
+
+import 'edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage();
@@ -31,6 +33,15 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.red),
       drawer: MyDrawer(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.edit_note,
+        ),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => EditProfilePage()));
+        },
+      ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -38,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ProfilePhoto(
-              width: MediaQuery.of(context).size.width * 0.2,
+              width: MediaQuery.of(context).size.width * 0.30,
               uid: uid,
             ),
             TextButton(
@@ -47,7 +58,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 uid: uid,
               ),
             ),
-            ProfileDescription(uid: uid),
+            ProfileInfo(
+              uid: uid,
+            ),
             TextButton(
                 onPressed: () async {
                   final instance = FirebaseFirestore.instance;
@@ -56,7 +69,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   var data = snapshot.data() as Map;
                   print(data['description']);
                 },
-                child: Text('poka'))
+                child: Text(
+                  'poka',
+                ))
           ],
         ),
       ),

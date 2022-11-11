@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zaliczenie/domain/photo_menager.dart';
 
@@ -29,9 +30,22 @@ class ProfileMenager {
         .update({'description': description});
   }
 
-  Future<String> displayDescription({required String uid}) async {
-    return '1';
+  Future<Map<String, dynamic>> displayInfo({required String uid}) async {
+    var data;
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(uid)
+          .get()
+          .then((DocumentSnapshot doc) {
+        data = doc.data() as Map<String, dynamic>;
+      });
+    } catch (e) {}
+    return data;
   }
 
   Future<void> editUserName() async {}
+  Future<void> editUserEmail() async {}
+  Future<void> editUserBirth() async {}
+  Future<void> editUserDescription() async {}
 }
