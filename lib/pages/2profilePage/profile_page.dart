@@ -48,18 +48,18 @@ class _ProfilePageState extends State<ProfilePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ProfilePhoto(
-              width: MediaQuery.of(context).size.width * 0.30,
-              uid: uid,
-            ),
-            TextButton(
-              child: Text('Zmien'),
-              onPressed: () => ProfileMenager().editPhoto(
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ProfilePhoto(
+                width: MediaQuery.of(context).size.width * 0.30,
                 uid: uid,
               ),
             ),
-            ProfileInfo(
-              uid: uid,
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: ProfileInfo(
+                uid: uid,
+              ),
             ),
             TextButton(
                 onPressed: () async {

@@ -12,24 +12,28 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   late final TextEditingController nameController;
-  late final TextEditingController emailController;
+  late final TextEditingController descriptionController;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     nameController = TextEditingController();
-    emailController = TextEditingController();
+    descriptionController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.save),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
+        child: Container(
+          width: MediaQuery.of(context).size.width * 1.5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,11 +51,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 hint: 'Nazwa',
                 obscureText: false,
               ),
-              Text('Data urodzenia:'),
-              Text('Opis:'),
-              TextField(
-                maxLines: null,
-              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: TextField(
+                  controller: descriptionController,
+                  maxLines: null,
+                  maxLength: 1000,
+                  decoration: InputDecoration(
+                    hintText: 'Opis',
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),

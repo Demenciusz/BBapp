@@ -28,18 +28,34 @@ class ProfileInfo extends StatelessWidget {
                 Text(
                   'Nazwa: \n$name',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 30,
+                  ),
                 ),
                 Text(
                   'Email: \n$email',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 30,
+                  ),
                 ),
                 Text(
                   'Data urodzenia: \n$birth',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 30,
+                  ),
                 ),
                 Text(
                   'Opis: \n$description',
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 30,
+                  ),
                 ),
               ],
             );

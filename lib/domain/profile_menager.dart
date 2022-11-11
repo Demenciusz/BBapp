@@ -5,17 +5,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:zaliczenie/domain/photo_menager.dart';
 
 class ProfileMenager {
-  Future<void> editPhoto({
-    required String uid,
-  }) async {
+  Future<FilePickerResult?> pickPhoto() async {
     PhotoMenager photoMenager = PhotoMenager();
     final profilePhoto = await FilePicker.platform.pickFiles(
         allowMultiple: false,
         type: FileType.custom,
         allowedExtensions: ['png', 'jpg']);
-    if (profilePhoto == null) {
+    return profilePhoto;
+  }
+
+  Future<void> editPhoto({
+    required String uid,
+    required FilePickerResult? result,
+  }) async {
+    PhotoMenager photoMenager = PhotoMenager();
+    if (result == null) {
     } else {
-      final path = profilePhoto.files.single.path;
+      final path = result.files.single.path;
       photoMenager.uploadPhoto(path!, uid);
     }
   }
@@ -44,8 +50,6 @@ class ProfileMenager {
     return data;
   }
 
-  Future<void> editUserName() async {}
-  Future<void> editUserEmail() async {}
-  Future<void> editUserBirth() async {}
-  Future<void> editUserDescription() async {}
+  Future<void> editUserName(String name) async {}
+  Future<void> editUserDescription(String description) async {}
 }

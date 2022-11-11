@@ -33,7 +33,10 @@ class Thumbnail extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Text(title),
+          Text(
+            title,
+            style: TextStyle(color: Colors.black54),
+          ),
           SizedBox(
             height: 35,
           ),
