@@ -7,7 +7,7 @@ class EditModeCubit extends Cubit<EditModeState> {
     return (state as EditModeInitial).editing;
   }
 
-  Future<void> isEditing() async {
+  void isEditing() async {
     try {
       if (editingValue) {
         emit(EditModeInitial(false));

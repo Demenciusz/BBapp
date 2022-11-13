@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zaliczenie/cubit/page/page_cubit.dart';
+import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/domain/profile_menager.dart';
 import 'package:zaliczenie/pages/2profilePage/widgets/profileInfo.dart';
 
@@ -38,41 +41,43 @@ class _ProfilePageState extends State<ProfilePage> {
           Icons.edit_note,
         ),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => EditProfilePage()));
+          BlocProvider.of<PhotoCubit>(context).newBool();
+          BlocProvider.of<PageCubit>(context).editProfilePage();
         },
       ),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: ProfilePhoto(
-                width: MediaQuery.of(context).size.width * 0.30,
-                uid: uid,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ProfilePhoto(
+                  width: MediaQuery.of(context).size.width * 0.30,
+                  uid: uid,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: ProfileInfo(
-                uid: uid,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ProfileInfo(
+                  uid: uid,
+                ),
               ),
-            ),
-            TextButton(
-                onPressed: () async {
-                  final instance = FirebaseFirestore.instance;
-                  CollectionReference col = instance.collection('Users');
-                  DocumentSnapshot snapshot = await col.doc(uid).get();
-                  var data = snapshot.data() as Map;
-                  print(data['description']);
-                },
-                child: Text(
-                  'poka',
-                ))
-          ],
+              TextButton(
+                  onPressed: () async {
+                    final instance = FirebaseFirestore.instance;
+                    CollectionReference col = instance.collection('Users');
+                    DocumentSnapshot snapshot = await col.doc(uid).get();
+                    var data = snapshot.data() as Map;
+                    print(data['description']);
+                  },
+                  child: Text(
+                    'poka',
+                  ))
+            ],
+          ),
         ),
       ),
     );

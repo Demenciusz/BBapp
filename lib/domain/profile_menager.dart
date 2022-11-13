@@ -50,6 +50,13 @@ class ProfileMenager {
     return data;
   }
 
-  Future<void> editUserName(String name) async {}
-  Future<void> editUserDescription(String description) async {}
+  Future<void> editUserName({
+    required String name,
+    required String uid,
+  }) async {
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(uid)
+        .update({'name': name});
+  }
 }

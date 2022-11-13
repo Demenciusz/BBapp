@@ -19,7 +19,8 @@ class CharactersPage extends StatelessWidget {
           Container(child: BlocBuilder<EditModeCubit, EditModeState>(
             builder: (context, state) {
               if (BlocProvider.of<EditModeCubit>(context).editingValue) {
-                return Text('1');
+                return Text(
+                    '1 ${BlocProvider.of<EditModeCubit>(context).editingValue}');
               } else {
                 return Text('2');
               }

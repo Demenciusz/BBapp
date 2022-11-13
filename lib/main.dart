@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
+import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
+import 'package:zaliczenie/pages/2profilePage/edit_profile_page.dart';
 import 'package:zaliczenie/pages/5charactersPage/characters_page.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/1homePage/home_page.dart';
@@ -34,10 +36,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: BlocProvider(
-        create: (context) => EditModeCubit(),
+        create: (context) => PhotoCubit(),
         child: BlocProvider(
-          create: (context) => PageCubit(),
-          child: const PageBuilder(),
+          create: (context) => EditModeCubit(),
+          child: BlocProvider(
+            create: (context) => PageCubit(),
+            child: const PageBuilder(),
+          ),
         ),
       ),
     );
@@ -55,6 +60,9 @@ class PageBuilder extends StatelessWidget {
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          final FirebaseAuth auth = FirebaseAuth.instance;
+          final User? user = auth.currentUser;
+          final String uid = user!.uid;
           return BlocBuilder<PageCubit, PageState>(builder: ((context, state) {
             if (state is HomePageState) {
               return HomePage();
@@ -62,6 +70,8 @@ class PageBuilder extends StatelessWidget {
               return ProfilePage();
             } else if (state is CharactersPageState) {
               return CharactersPage();
+            } else if (state is EditProfilePageState) {
+              return EditProfilePage(uid: uid);
             }
             return HomePage();
           }));
