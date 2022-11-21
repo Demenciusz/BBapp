@@ -9,6 +9,7 @@ import 'package:zaliczenie/pages/2profilePage/widgets/profileInfo.dart';
 
 import 'package:zaliczenie/pages/2profilePage/widgets/profilePhoto.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
+import 'package:zaliczenie/pages/widgets/floating_button.dart';
 
 import 'edit_profile_page.dart';
 
@@ -31,11 +32,9 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.red),
       drawer: MyDrawer(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.edit_note,
-        ),
-        onPressed: () async {
+      floatingActionButton: MyFloatingButton(
+        icon: Icons.edit_note,
+        function: () async {
           final instance = FirebaseFirestore.instance;
           CollectionReference col = instance.collection('Users');
           DocumentSnapshot snapshot = await col.doc(widget.uid).get();
