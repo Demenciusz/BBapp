@@ -36,13 +36,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: BlocProvider(
-        create: (context) => PhotoCubit(),
+        create: (context) => EditModeCubit(),
         child: BlocProvider(
-          create: (context) => EditModeCubit(),
-          child: BlocProvider(
-            create: (context) => PageCubit(),
-            child: const PageBuilder(),
-          ),
+          create: (context) => PageCubit(),
+          child: const PageBuilder(),
         ),
       ),
     );
@@ -67,11 +64,11 @@ class PageBuilder extends StatelessWidget {
             if (state is HomePageState) {
               return HomePage();
             } else if (state is ProfilePageState) {
-              return ProfilePage();
+              return ProfilePage(
+                uid: uid,
+              );
             } else if (state is CharactersPageState) {
-              return CharactersPage();
-            } else if (state is EditProfilePageState) {
-              return EditProfilePage(uid: uid);
+              return CharactersPage(uid: uid);
             }
             return HomePage();
           }));

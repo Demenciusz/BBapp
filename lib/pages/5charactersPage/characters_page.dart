@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_state.dart';
+import 'package:zaliczenie/pages/5charactersPage/widgets/charactres_list.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
 
 class CharactersPage extends StatelessWidget {
-  const CharactersPage({super.key});
+  const CharactersPage({required this.uid});
+  final String uid;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,8 @@ class CharactersPage extends StatelessWidget {
                 return Text(
                     '1 ${BlocProvider.of<EditModeCubit>(context).editingValue}');
               } else {
-                return Text('2');
+                return CharacterList(
+                    height: MediaQuery.of(context).size.height, uid: uid);
               }
             },
           )),
@@ -30,7 +33,12 @@ class CharactersPage extends StatelessWidget {
               onPressed: (() {
                 BlocProvider.of<EditModeCubit>(context).isEditing();
               }),
-              child: Text('xd'))
+              child: Text('xd')),
+          CharacterList(
+            height: MediaQuery.of(context).size.height,
+            uid: uid,
+          ),
+          Text('data')
         ],
       ),
     );

@@ -13,22 +13,17 @@ import 'package:zaliczenie/pages/widgets/drawer.dart';
 import 'edit_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage();
+  ProfilePage({required this.uid});
+  final String uid;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  late final User? user;
-  late final String uid;
-
   @override
   void initState() {
     super.initState();
-    user = auth.currentUser;
-    uid = user!.uid;
   }
 
   @override
@@ -40,9 +35,19 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Icon(
           Icons.edit_note,
         ),
-        onPressed: () {
-          BlocProvider.of<PhotoCubit>(context).newBool();
-          BlocProvider.of<PageCubit>(context).editProfilePage();
+        onPressed: () async {
+          final instance = FirebaseFirestore.instance;
+          CollectionReference col = instance.collection('Users');
+          DocumentSnapshot snapshot = await col.doc(widget.uid).get();
+          var data = snapshot.data() as Map;
+          String oldDescription = data['description'];
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => EditProfilePage(
+                        uid: widget.uid,
+                        description: oldDescription,
+                      )));
         },
       ),
       body: SingleChildScrollView(
@@ -56,20 +61,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.all(12.0),
                 child: ProfilePhoto(
                   width: MediaQuery.of(context).size.width * 0.30,
-                  uid: uid,
+                  uid: widget.uid,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: ProfileInfo(
-                  uid: uid,
+                  uid: widget.uid,
                 ),
               ),
               TextButton(
                   onPressed: () async {
                     final instance = FirebaseFirestore.instance;
                     CollectionReference col = instance.collection('Users');
-                    DocumentSnapshot snapshot = await col.doc(uid).get();
+                    DocumentSnapshot snapshot = await col.doc(widget.uid).get();
                     var data = snapshot.data() as Map;
                     print(data['description']);
                   },
