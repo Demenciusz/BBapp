@@ -41,10 +41,12 @@ class _ProfilePageState extends State<ProfilePage> {
           DocumentSnapshot snapshot = await col.doc(widget.uid).get();
           var data = snapshot.data() as Map;
           String oldDescription = data['description'];
+          String oldName = data['name'];
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => BlocHelper(
+                        name: oldName,
                         uid: widget.uid,
                         description: oldDescription,
                       ))).whenComplete(

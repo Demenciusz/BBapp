@@ -12,24 +12,31 @@ import 'package:zaliczenie/domain/profile_menager.dart';
 import 'package:zaliczenie/pages/widgets/textfield.dart';
 
 class BlocHelper extends StatelessWidget {
-  const BlocHelper({required this.uid, required this.description});
+  const BlocHelper(
+      {required this.uid, required this.description, required this.name});
   final String uid;
   final String description;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => PhotoCubit(),
-      child: EditProfilePage(uid: uid, description: description),
+      child: EditProfilePage(
+        uid: uid,
+        description: description,
+        name: name,
+      ),
     );
   }
 }
 
 class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({required this.uid, required this.description});
+  const EditProfilePage(
+      {required this.uid, required this.description, required this.name});
   final String uid;
   final String description;
-
+  final String name;
   @override
   State<EditProfilePage> createState() => _EditProfilePageState();
 }
@@ -44,6 +51,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.initState();
     nameController = TextEditingController();
     descriptionController = TextEditingController();
+    nameController.text = widget.name;
+    descriptionController.text = widget.description;
   }
 
   @override
