@@ -25,6 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+    BlocProvider.of<PageCubit>(context).profilePage();
   }
 
   @override
@@ -43,10 +44,11 @@ class _ProfilePageState extends State<ProfilePage> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => EditProfilePage(
+                  builder: (context) => BlocHelper(
                         uid: widget.uid,
                         description: oldDescription,
-                      )));
+                      ))).whenComplete(
+              () => BlocProvider.of<PageCubit>(context).profilePage());
         },
       ),
       body: SingleChildScrollView(
