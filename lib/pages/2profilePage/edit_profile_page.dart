@@ -32,8 +32,11 @@ class BlocHelper extends StatelessWidget {
 }
 
 class EditProfilePage extends StatefulWidget {
-  const EditProfilePage(
-      {required this.uid, required this.description, required this.name});
+  const EditProfilePage({
+    required this.uid,
+    required this.description,
+    required this.name,
+  });
   final String uid;
   final String description;
   final String name;
