@@ -10,7 +10,9 @@ class PhotoMenager {
     File file = File(photoPath);
     try {
       await storage.ref('profileP/$uid').putFile(file);
-    } on firebase_core.FirebaseException catch (e) {}
+    } on firebase_core.FirebaseException catch (e) {
+      print(e);
+    }
   }
 
   Future<String> displayPhoto(String uid) async {

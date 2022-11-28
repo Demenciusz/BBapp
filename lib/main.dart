@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/pages/2profilePage/edit_profile_page.dart';
+import 'package:zaliczenie/pages/4dicePage/dice_page.dart';
 import 'package:zaliczenie/pages/5charactersPage/characters_page.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/1homePage/home_page.dart';
@@ -69,6 +70,8 @@ class PageBuilder extends StatelessWidget {
               );
             } else if (state is CharactersPageState) {
               return CharactersPage(uid: uid);
+            } else if (state is DicePageState) {
+              return DicePage();
             }
             return HomePage();
           }));

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/page/page_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
+import 'package:zaliczenie/domain/photo_menager.dart';
 import 'package:zaliczenie/domain/profile_menager.dart';
 import 'package:zaliczenie/pages/2profilePage/widgets/profileInfo.dart';
 
@@ -43,14 +44,19 @@ class _ProfilePageState extends State<ProfilePage> {
           String oldDescription = data['description'];
           String oldName = data['name'];
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => BlocHelper(
-                        name: oldName,
-                        uid: widget.uid,
-                        description: oldDescription,
-                      ))).whenComplete(
-              () => BlocProvider.of<PageCubit>(context).profilePage());
+            context,
+            MaterialPageRoute(
+              builder: (context) => BlocHelper(
+                name: oldName,
+                uid: widget.uid,
+                description: oldDescription,
+              ),
+            ),
+          ).then((value) async {
+            PhotoMenager menager = PhotoMenager();
+            await menager.displayPhoto(widget.uid);
+            setState(() {});
+          });
         },
       ),
       body: SingleChildScrollView(
