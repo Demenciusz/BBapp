@@ -4,12 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AuthController {
-  Future signIn(
-      {required String email,
-      required String password,
-      required BuildContext context,
-      required String title,
-      required content}) async {
+  Future signIn({
+    required String email,
+    required String password,
+    required BuildContext context,
+    required String title,
+    required content,
+  }) async {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);

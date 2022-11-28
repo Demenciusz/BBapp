@@ -11,6 +11,8 @@ import 'package:zaliczenie/cubit/photo/photo_state.dart';
 import 'package:zaliczenie/domain/profile_menager.dart';
 import 'package:zaliczenie/pages/widgets/textfield.dart';
 
+import '../widgets/floating_button.dart';
+
 class BlocHelper extends StatelessWidget {
   const BlocHelper(
       {required this.uid, required this.description, required this.name});
@@ -61,8 +63,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+      floatingActionButton: MyFloatingButton(
+        icon: Icons.save,
+        function: () async {
           ProfileMenager menager = ProfileMenager();
           if (nameController.text.length >= 4) {
             await menager.editUserName(
@@ -78,7 +81,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           }
           Navigator.pop(context);
         },
-        child: Icon(Icons.save),
       ),
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -153,3 +155,25 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 }
+
+/* 
+FloatingActionButton(
+        onPressed: () async {
+          ProfileMenager menager = ProfileMenager();
+          if (nameController.text.length >= 4) {
+            await menager.editUserName(
+                name: nameController.text.trim(), uid: widget.uid);
+          }
+          if (descriptionController.text.length > 0) {
+            await menager.editProfilDescription(
+                uid: widget.uid,
+                description: descriptionController.text.trim());
+          }
+          if (fileResult != null) {
+            await menager.editPhoto(uid: widget.uid, result: fileResult);
+          }
+          Navigator.pop(context);
+        },
+        child: Icon(Icons.save),
+      ),
+      */

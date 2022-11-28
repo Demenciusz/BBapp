@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/pages/2profilePage/edit_profile_page.dart';
@@ -37,10 +38,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: BlocProvider(
-        create: (context) => EditModeCubit(),
+        create: (context) => DiceCubit(),
         child: BlocProvider(
-          create: (context) => PageCubit(),
-          child: const PageBuilder(),
+          create: (context) => EditModeCubit(),
+          child: BlocProvider(
+            create: (context) => PageCubit(),
+            child: const PageBuilder(),
+          ),
         ),
       ),
     );
