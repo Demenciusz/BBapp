@@ -52,7 +52,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   FilePickerResult? fileResult;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     nameController = TextEditingController();
     descriptionController = TextEditingController();
