@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:zaliczenie/domain/photo_menager.dart';
+import 'package:zaliczenie/domain/photo_manager.dart';
 
 class ProfilePhoto extends StatelessWidget {
   ProfilePhoto({required this.width, required this.uid});
 
   double width;
   String uid;
-  PhotoMenager photoStorage = PhotoMenager();
+  PhotoManager photoStorage = PhotoManager();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

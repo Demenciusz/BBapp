@@ -4,7 +4,7 @@ import 'package:zaliczenie/domain/video.dart';
 import 'package:http/http.dart' as http;
 import '../constants.dart';
 
-class VideoListMenager {
+class VideoListManager {
   static Future<List<Video>> makeList() async {
     Uri url = Uri.parse(ytUrl);
     http.Response response = await http.get(url);

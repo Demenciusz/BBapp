@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_st;
 
-class PhotoMenager {
+class PhotoManager {
   final firebase_st.FirebaseStorage storage =
       firebase_st.FirebaseStorage.instance;
 

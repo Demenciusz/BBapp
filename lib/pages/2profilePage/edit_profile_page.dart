@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/page/page_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_state.dart';
-import 'package:zaliczenie/domain/profile_menager.dart';
+import 'package:zaliczenie/domain/profile_manager.dart';
 import 'package:zaliczenie/pages/widgets/textfield.dart';
 
 import '../widgets/floating_button.dart';

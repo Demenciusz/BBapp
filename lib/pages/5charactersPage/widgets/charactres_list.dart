@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:zaliczenie/domain/characters_menager.dart';
+import 'package:zaliczenie/domain/characters_manager.dart';
 
 class CharacterList extends StatelessWidget {
   const CharacterList({required this.height, required this.uid});

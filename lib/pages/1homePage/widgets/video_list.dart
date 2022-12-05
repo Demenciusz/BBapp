@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/video.dart';
-import 'package:zaliczenie/domain/video_menager.dart';
+import 'package:zaliczenie/domain/video_manager.dart';
 import 'package:zaliczenie/pages/1homePage/widgets/thumbnail.dart';
 
 class VideoList extends StatelessWidget {
@@ -12,7 +12,7 @@ class VideoList extends StatelessWidget {
     return SizedBox(
       height: height * 0.8,
       child: FutureBuilder<List<Video>>(
-          future: VideoListMenager.makeList(),
+          future: VideoListManager.makeList(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<Video> video = snapshot.data!;

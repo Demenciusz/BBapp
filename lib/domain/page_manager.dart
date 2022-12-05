@@ -4,7 +4,7 @@ import 'package:zaliczenie/pages/0loginRegisterPage/login_page.dart';
 import 'package:flutter_bloc/src/bloc_builder.dart';
 import 'package:zaliczenie/pages/1homePage/home_page.dart';
 
-Widget PageMenager() {
+Widget PageManager() {
   return BlocBuilder<PageCubit, PageState>(
     builder: (context, state) {
       if (state is HomePageState) {

@@ -1,7 +1,7 @@
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:zaliczenie/domain/video_menager.dart';
+import 'package:zaliczenie/domain/video_manager.dart';
 
 class Thumbnail extends StatelessWidget {
   const Thumbnail({
@@ -23,7 +23,7 @@ class Thumbnail extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onLongPress: () => VideoListMenager.openVideo(link),
+            onLongPress: () => VideoListManager.openVideo(link),
             //onTap: () => VideoListMenager.openVideo(link),
             child: Image.network(
               height: 300,

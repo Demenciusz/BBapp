@@ -18,6 +18,19 @@ class CharacterManager {
 
     return list;
   }
+
+  Future<void> deleteCharacter(String id, String uid) async {
+    final thisCollection = FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id);
+
+    await thisCollection.doc('Skills').delete();
+    await thisCollection.doc('Weapons').delete();
+    await thisCollection.doc('About').delete();
+    await thisCollection.doc('Eq').delete();
+    await thisCollection.doc('Stats').delete();
+  }
 }
 
 class Character {
