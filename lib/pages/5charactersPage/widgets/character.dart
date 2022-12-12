@@ -7,11 +7,15 @@ class Character extends StatelessWidget {
     required this.id,
     required this.name,
     required this.game,
+    required this.editFun,
+    required this.deleteFun,
   });
   final String fireId;
   final String name;
   final String game;
   final int id;
+  final VoidCallback editFun;
+  final VoidCallback deleteFun;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +27,11 @@ class Character extends StatelessWidget {
           Text(name),
           Text(game),
           GestureDetector(
+            onTap: editFun,
             child: Icon(Icons.edit),
           ),
           GestureDetector(
+            onTap: deleteFun,
             child: Icon(Icons.delete),
           ),
         ],
