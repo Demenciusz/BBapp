@@ -71,7 +71,10 @@ class PageBuilder extends StatelessWidget {
             } else if (state is CharactersPageState) {
               return CharactersPage(uid: uid);
             } else if (state is DicePageState) {
-              return DicePage();
+              return BlocProvider(
+                create: (context) => DiceCubit(),
+                child: DicePage(),
+              );
             }
             return HomePage();
           }));

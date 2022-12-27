@@ -31,6 +31,11 @@ class DiceCubit extends Cubit<DiceState> {
       case 'k20':
         emit(DiceInitial(CurrentDice.k20));
         break;
+      case 'k100':
+        emit(DiceInitial(CurrentDice.k100));
+        break;
     }
   }
+
+  void rollDice() {}
 }

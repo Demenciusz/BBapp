@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-Padding kTextButton(
-    {required double screenWidth,
-    required VoidCallback onPressed,
-    required String content}) {
+Padding kTextButton({
+  required double screenWidth,
+  required VoidCallback onPressed,
+  required String content,
+}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(

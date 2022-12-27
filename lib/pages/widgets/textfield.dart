@@ -14,11 +14,12 @@ InputDecoration kDecoratedTextField({required String hint}) {
   );
 }
 
-Widget kTextField(
-    {required TextEditingController controller,
-    required double screenWidth,
-    required String hint,
-    required bool obscureText}) {
+Widget kTextField({
+  required TextEditingController controller,
+  required double screenWidth,
+  required String hint,
+  required bool obscureText,
+}) {
   return Padding(
     padding: const EdgeInsets.all(12.0),
     child: SizedBox(

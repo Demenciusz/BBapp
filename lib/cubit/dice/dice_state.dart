@@ -8,4 +8,8 @@ class DiceInitial extends DiceState {
   List<Object?> get props => [currentDice];
 }
 
-enum CurrentDice { k4, k6, k8, k10, k12, k20 }
+class DiceAnimation extends DiceState {
+  List<Object?> get props => [];
+}
+
+enum CurrentDice { k4, k6, k8, k10, k12, k20, k100 }
