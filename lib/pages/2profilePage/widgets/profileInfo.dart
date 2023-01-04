@@ -60,7 +60,15 @@ class ProfileInfo extends StatelessWidget {
               ],
             );
           } else {
-            return const CircularProgressIndicator();
+            return Center(
+              child: SizedBox(
+                child: const CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                ),
+                width: 50,
+                height: 50,
+              ),
+            );
           }
         },
       ),

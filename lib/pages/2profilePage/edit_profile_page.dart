@@ -109,7 +109,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               Image.file(File(fileResult!.paths[0].toString()))
                                   .image,
                           child: fileResult == null
-                              ? CircularProgressIndicator()
+                              ? SizedBox(
+                                  child: const CircularProgressIndicator(),
+                                  width: 30,
+                                  height: 30,
+                                )
                               : null,
                         );
                       } else {

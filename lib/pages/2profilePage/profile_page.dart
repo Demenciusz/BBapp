@@ -79,7 +79,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   uid: widget.uid,
                 ),
               ),
-              TextButton(
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+/*
+TextButton(
                   onPressed: () async {
                     final instance = FirebaseFirestore.instance;
                     CollectionReference col = instance.collection('Users');
@@ -90,10 +98,4 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Text(
                     'poka',
                   ))
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+*/

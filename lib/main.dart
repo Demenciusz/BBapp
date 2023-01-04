@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
+
+import 'package:zaliczenie/pages/3chatPage/chat_page.dart';
 import 'package:zaliczenie/pages/4dicePage/dice_page.dart';
 import 'package:zaliczenie/pages/5charactersPage/characters_page.dart';
 import 'package:zaliczenie/pages/1homePage/home_page.dart';
@@ -61,6 +63,7 @@ class PageBuilder extends StatelessWidget {
           final FirebaseAuth auth = FirebaseAuth.instance;
           final User? user = auth.currentUser;
           final String uid = user!.uid;
+          final String email = user.email!;
           return BlocBuilder<PageCubit, PageState>(builder: ((context, state) {
             if (state is HomePageState) {
               return HomePage();
@@ -74,6 +77,11 @@ class PageBuilder extends StatelessWidget {
               return BlocProvider(
                 create: (context) => DiceCubit(),
                 child: DicePage(),
+              );
+            } else if (state is ChatPageState) {
+              return ChatPage(
+                email: email,
+                uid: uid,
               );
             }
             return HomePage();

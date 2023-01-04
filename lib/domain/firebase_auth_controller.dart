@@ -54,14 +54,19 @@ class AuthController {
     }
   }
 
-  Future userProfilData(
-      {required String name,
-      required String birth,
-      required String email,
-      required String uid}) async {
+  Future userProfilData({
+    required String name,
+    required String birth,
+    required String email,
+    required String uid,
+  }) async {
     try {
-      await FirebaseFirestore.instance.collection('Users').doc(uid).set(
-          {'name': name, 'birth': birth, 'email': email, 'description': ''});
+      await FirebaseFirestore.instance.collection('Users').doc(uid).set({
+        'name': name,
+        'birth': birth,
+        'email': email,
+        'description': '',
+      });
     } catch (e) {}
   }
 }
