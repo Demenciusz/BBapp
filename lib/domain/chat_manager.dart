@@ -54,6 +54,7 @@ class ChatManager {
       'text': text,
       'sender': sender,
       'name': userName,
+      'id': id,
     });
   }
 }

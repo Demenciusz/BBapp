@@ -26,15 +26,18 @@ class _MessagesListState extends State<MessagesList> {
             final messageText = map['text'];
             final messageSender = map['sender'];
             final messageUser = map['name'];
+            final id = map['id'];
             messagesWidgets.add(MessageWidget(
               text: messageText,
               sender: messageSender,
               userEmail: widget.email,
               userName: messageUser,
+              id: id,
             ));
           }
           return Expanded(
             child: ListView(
+              reverse: true,
               padding: EdgeInsets.symmetric(
                 vertical: 2,
                 horizontal: 2,
