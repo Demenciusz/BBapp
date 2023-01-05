@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/pages/3chatPage/widgets/message_widget.dart';
 
@@ -14,6 +15,14 @@ class MessagesList extends StatefulWidget {
 }
 
 class _MessagesListState extends State<MessagesList> {
+  late final ScrollController controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = ScrollController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -21,6 +30,7 @@ class _MessagesListState extends State<MessagesList> {
         if (snapshot.hasData) {
           final messages = snapshot.data!.docs;
           List<MessageWidget> messagesWidgets = [];
+
           for (var message in messages) {
             final map = message.data() as Map;
             final messageText = map['text'];
@@ -38,11 +48,12 @@ class _MessagesListState extends State<MessagesList> {
           return Expanded(
             child: ListView(
               reverse: true,
+              controller: controller,
               padding: EdgeInsets.symmetric(
                 vertical: 2,
                 horizontal: 2,
               ),
-              children: messagesWidgets,
+              children: messagesWidgets.reversed.toList(),
             ),
           );
         } else
