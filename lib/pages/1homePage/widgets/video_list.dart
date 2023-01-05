@@ -37,7 +37,14 @@ class VideoList extends StatelessWidget {
                 ),
               );
             } else
-              return const CircularProgressIndicator();
+              return Center(
+                  child: SizedBox(
+                child: const CircularProgressIndicator(
+                  color: Colors.red,
+                ),
+                width: 100,
+                height: 100,
+              ));
           }),
     );
   }
