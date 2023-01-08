@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:zaliczenie/pages/3chatPage/widgets/sender_page.dart';
 
 class MessageWidget extends StatelessWidget {
   const MessageWidget({
@@ -75,47 +76,67 @@ class MessageWidget extends StatelessWidget {
               ),
             ),
           )
-        : Padding(
-            padding: const EdgeInsets.all(1.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(userName),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFFE4E6EB),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            text,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
+        : GestureDetector(
+            onLongPress: () async {
+              await FirebaseFirestore.instance
+                  .collection('Users')
+                  .where('email', isEqualTo: sender)
+                  .get()
+                  .then((value) {
+                value.docs.forEach(
+                  (element) {
+                    String id = element.id;
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SenderPage(uid: id),
+                        ));
+                  },
+                );
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(userName),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFFE4E6EB),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              text,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
+                              textAlign: TextAlign.left,
                             ),
-                            textAlign: TextAlign.left,
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                    )
-                  ],
-                ),
-              ],
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
   }
