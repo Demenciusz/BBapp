@@ -1,6 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zaliczenie/cubit/characters/characters_about_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_eq_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_skills_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_stats_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_weapons_cubit.dart';
 import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 
@@ -28,20 +33,39 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Roboto',
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Colors.red,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CharactersAboutCubit>(
+          create: ((context) => CharactersAboutCubit()),
         ),
-      ),
-      home: BlocProvider(
-        create: (context) => DiceCubit(),
-        child: BlocProvider(
-          create: (context) => EditModeCubit(),
+        BlocProvider<CharactersStatsCubit>(
+          create: ((context) => CharactersStatsCubit()),
+        ),
+        BlocProvider<CharactersSkillsCubit>(
+          create: ((context) => CharactersSkillsCubit()),
+        ),
+        BlocProvider<CharactersEqCubit>(
+          create: ((context) => CharactersEqCubit()),
+        ),
+        BlocProvider<CharactersWeaponsCubit>(
+          create: ((context) => CharactersWeaponsCubit()),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'Roboto',
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.red,
+          ),
+        ),
+        home: BlocProvider(
+          create: (context) => DiceCubit(),
           child: BlocProvider(
-            create: (context) => PageCubit(),
-            child: const PageBuilder(),
+            create: (context) => EditModeCubit(),
+            child: BlocProvider(
+              create: (context) => PageCubit(),
+              child: const PageBuilder(),
+            ),
           ),
         ),
       ),

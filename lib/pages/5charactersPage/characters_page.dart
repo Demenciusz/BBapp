@@ -5,6 +5,7 @@ import 'package:zaliczenie/cubit/edit/edit_mode_cubit.dart';
 import 'package:zaliczenie/cubit/edit/edit_mode_state.dart';
 import 'package:zaliczenie/domain/characters_manager.dart';
 import 'package:zaliczenie/pages/5charactersPage/add_character.dart';
+import 'package:zaliczenie/pages/5charactersPage/character_name_game_page.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/characters_list.dart';
 
@@ -30,7 +31,7 @@ class CharactersPage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: ((context) => AddCharacter()),
+              builder: ((context) => CharacterNameGamePage()),
             ),
           );
         },

@@ -9,10 +9,24 @@ class CharactersSkillsCubit extends Cubit<CharactersState> {
     return (state as CharactersData).map;
   }
 
-  void addToMap(String key, String value) {
-    emit(CharactersData({
-      ...(state as CharactersData).map,
-      key: value,
-    }));
+  bool addToMap(String key, String value) {
+    if ((state as CharactersData).map.containsKey(key)) {
+      return false;
+    } else {
+      Map<String, String> map = takeMap;
+      print(map);
+      map[key] = value;
+      print(map);
+      emit(CharactersData(map));
+
+      return true;
+    }
+  }
+
+  void deleteKey(String key) {
+    Map<String, String> map = takeMap;
+    map.remove(key);
+    print(map);
+    emit(CharactersData(map));
   }
 }

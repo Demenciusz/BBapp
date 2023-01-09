@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:zaliczenie/cubit/characters/characters_state.dart';
 
@@ -29,4 +30,6 @@ class CharactersAboutCubit extends Cubit<CharactersState> {
     print(map);
     emit(CharactersData(map));
   }
+
+  Future<void> saveCharacter(String id) async {}
 }
