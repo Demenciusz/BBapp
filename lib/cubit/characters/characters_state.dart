@@ -5,8 +5,16 @@ abstract class CharactersState extends Equatable {
 }
 
 class CharactersInitial extends CharactersState {
+  final Edit edit;
+  CharactersInitial(this.edit);
   @override
   List<Object> get props => [];
 }
 
-enum edit { list, stats }
+enum Edit {
+  stats,
+  about,
+  eq,
+  skills,
+  weapons,
+}

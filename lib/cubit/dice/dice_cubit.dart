@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:zaliczenie/cubit/photo/photo_state.dart';
 
 part 'dice_state.dart';
 

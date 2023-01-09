@@ -1,40 +1,95 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zaliczenie/domain/id_time.dart';
 
 class CharacterManager {
-  Future<List<Character>> makeList(String uid) async {
-    List<Character> list = [];
-    final QuerySnapshot result = await FirebaseFirestore.instance
-        .collection('Characters')
-        .doc('new')
-        .collection(uid)
-        .get();
-    final List<DocumentSnapshot> documents = result.docs;
-    documents.forEach((element) {
-      print(element.data());
-      print('------------------------------------------');
-      list.add(Character(
-          name: element.data().toString(), game: element.data().toString()));
-    });
-
-    return list;
-  }
-
-  Future<void> deleteCharacter(String id, String uid) async {
-    final thisCollection = FirebaseFirestore.instance
+  static Future<void> addCharacter(
+    String uid,
+    String game,
+    String name,
+    Map<String, String> map,
+  ) async {
+    String id = IdTime.idByTime();
+    await FirebaseFirestore.instance
         .collection('Characters')
         .doc(uid)
-        .collection(id);
-
-    await thisCollection.doc('Skills').delete();
-    await thisCollection.doc('Weapons').delete();
-    await thisCollection.doc('About').delete();
-    await thisCollection.doc('Eq').delete();
-    await thisCollection.doc('Stats').delete();
+        .collection('Char')
+        .doc(id)
+        .set({
+      'id': id,
+      'name': name,
+      'game': game,
+    });
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('About')
+        .set(map);
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Stats')
+        .set(map);
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Eq')
+        .set(map);
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Skills')
+        .set(map);
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Weapons')
+        .set(map);
   }
-}
 
-class Character {
-  Character({required this.name, required this.game});
-  final String name;
-  final String game;
+  static Future<void> deleteCharacter(
+    String uid,
+    String id,
+  ) async {
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection('Char')
+        .doc(id)
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('About')
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Stats')
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Eq')
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Skills')
+        .delete();
+    await FirebaseFirestore.instance
+        .collection('Characters')
+        .doc(uid)
+        .collection(id)
+        .doc('Weapons')
+        .delete();
+  }
 }

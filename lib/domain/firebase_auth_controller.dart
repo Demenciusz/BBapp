@@ -47,7 +47,7 @@ class AuthController {
       final FirebaseAuth auth = FirebaseAuth.instance;
       final User? user = auth.currentUser;
       final String myUid = user!.uid;
-      userProfilData(name: name, birth: birth, email: email, uid: myUid);
+      await userProfilData(name: name, birth: birth, email: email, uid: myUid);
       await FirebaseAuth.instance.signOut();
     } catch (e) {
       print(e);

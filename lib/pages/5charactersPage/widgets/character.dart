@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:zaliczenie/domain/characters_manager.dart';
 
-class Character extends StatelessWidget {
-  const Character({
+class CharacterWidget extends StatelessWidget {
+  const CharacterWidget({
     super.key,
-    required this.fireId,
     required this.id,
     required this.name,
     required this.game,
-    required this.editFun,
-    required this.deleteFun,
+    required this.uid,
   });
-  final String fireId;
+
   final String name;
   final String game;
-  final int id;
-  final VoidCallback editFun;
-  final VoidCallback deleteFun;
+  final String id;
+  final String uid;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +21,52 @@ class Character extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 50,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(name),
-          Text(game),
           GestureDetector(
-            onTap: editFun,
-            child: Icon(Icons.edit),
+            onLongPress: () {},
+            child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.25,
+                child: Text(
+                  name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.orange.shade700),
+                )),
           ),
           GestureDetector(
-            onTap: deleteFun,
-            child: Icon(Icons.delete),
+            onLongPress: () {},
+            child: SizedBox(
+              child: Text(
+                game,
+                style: TextStyle(fontSize: 20, color: Colors.grey),
+                textAlign: TextAlign.center,
+              ),
+              width: MediaQuery.of(context).size.width * 0.25,
+            ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.25,
+            child: GestureDetector(
+              onTap: () async {},
+              child: Icon(
+                Icons.edit,
+                color: Colors.yellow,
+                size: 34,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.25,
+            child: GestureDetector(
+              onTap: () async {
+                CharacterManager.deleteCharacter(uid, id);
+              },
+              child: Icon(
+                Icons.delete,
+                color: Colors.red,
+                size: 34,
+              ),
+            ),
           ),
         ],
       ),
