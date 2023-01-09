@@ -2,6 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zaliczenie/domain/id_time.dart';
 
 class CharacterManager {
+  Map<String, String> about = {};
+  Map<String, String> stats = {};
+  Map<String, String> skills = {};
+  Map<String, String> eq = {};
+  Map<String, String> weapons = {};
   static Future<void> addCharacter(
     String uid,
     String game,

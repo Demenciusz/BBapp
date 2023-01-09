@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zaliczenie/cubit/characters/characters_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_about_cubit.dart';
+import 'package:zaliczenie/cubit/characters/characters_state.dart';
+import 'package:zaliczenie/cubit/characters/characters_stats_cubit.dart';
+import 'package:zaliczenie/pages/5charactersPage/widgets/character_about.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character_row.dart';
 
 class AddCharacter extends StatefulWidget {
@@ -16,43 +19,6 @@ class _AddCharacterState extends State<AddCharacter> {
     setState(() {
       selectedIndex = index;
     });
-    switch (selectedIndex) {
-      case 0:
-        characterRow = [];
-        about.forEach((key, value) {
-          characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-        });
-        BlocProvider.of<CharactersCubit>(context).changeTab(Edit.about);
-        break;
-      case 1:
-        characterRow = [];
-        stats.forEach((key, value) {
-          characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-        });
-        BlocProvider.of<CharactersCubit>(context).changeTab(Edit.stats);
-        break;
-      case 2:
-        characterRow = [];
-        skills.forEach((key, value) {
-          characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-        });
-        BlocProvider.of<CharactersCubit>(context).changeTab(Edit.skills);
-        break;
-      case 3:
-        characterRow = [];
-        eq.forEach((key, value) {
-          characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-        });
-        BlocProvider.of<CharactersCubit>(context).changeTab(Edit.eq);
-        break;
-      case 4:
-        characterRow = [];
-        weapons.forEach((key, value) {
-          characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-        });
-        BlocProvider.of<CharactersCubit>(context).changeTab(Edit.weapons);
-        break;
-    }
   }
 
   Map<String, String> about = {
@@ -70,48 +36,14 @@ class _AddCharacterState extends State<AddCharacter> {
   List<CharacterRow> characterRow = [];
 
   @override
-  void initState() {
-    super.initState();
-
-    about.forEach((key, value) {
-      characterRow.add(CharacterRow(mapKey: key, mapValue: value));
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
       ),
-      body: BlocBuilder<CharactersCubit, CharactersState>(
-        builder: (context, state) {
-          switch (BlocProvider.of<CharactersCubit>(context).takeEditTab) {
-            case Edit.stats:
-              return Text('xd');
-              break;
-            case Edit.about:
-              return ListView(
-                children: characterRow,
-              );
-              break;
-            case Edit.eq:
-              return ListView(
-                children: characterRow,
-              );
-              break;
-            case Edit.skills:
-              return ListView(
-                children: characterRow,
-              );
-              break;
-            case Edit.weapons:
-              return ListView(
-                children: characterRow,
-              );
-              break;
-          }
-        },
+      body: BlocProvider(
+        create: (context) => CharactersAboutCubit(),
+        child: CharacterAbout(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeIndex,

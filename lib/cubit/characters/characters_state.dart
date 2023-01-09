@@ -1,20 +1,15 @@
-part of 'characters_cubit.dart';
+import 'package:equatable/equatable.dart';
 
 abstract class CharactersState extends Equatable {
   const CharactersState();
-}
 
-class CharactersInitial extends CharactersState {
-  final Edit edit;
-  CharactersInitial(this.edit);
   @override
   List<Object> get props => [];
 }
 
-enum Edit {
-  stats,
-  about,
-  eq,
-  skills,
-  weapons,
+class CharactersData extends CharactersState {
+  final Map<String, String> map;
+  CharactersData(this.map);
+  @override
+  List<Object> get props => [map, identityHashCode(this)];
 }
