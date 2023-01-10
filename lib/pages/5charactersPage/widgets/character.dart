@@ -24,39 +24,33 @@ class CharacterWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onLongPress: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => ViewCharacter(
-                          id: id, uid: uid, name: name, game: game))));
-            },
-            child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.25,
-                child: Text(
-                  name,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.orange.shade700),
-                )),
-          ),
-          GestureDetector(
-            onLongPress: () {},
-            child: SizedBox(
-              child: Text(
-                game,
-                style: TextStyle(fontSize: 20, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
+          SizedBox(
               width: MediaQuery.of(context).size.width * 0.25,
+              child: Text(
+                name,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, color: Colors.orange.shade700),
+              )),
+          SizedBox(
+            child: Text(
+              game,
+              style: TextStyle(fontSize: 20, color: Colors.grey),
+              textAlign: TextAlign.center,
             ),
+            width: MediaQuery.of(context).size.width * 0.25,
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.25,
             child: GestureDetector(
-              onTap: () async {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => ViewCharacter(
+                            id: id, uid: uid, name: name, game: game))));
+              },
               child: Icon(
-                Icons.edit,
+                Icons.remove_red_eye_sharp,
                 color: Colors.yellow,
                 size: 34,
               ),
@@ -65,7 +59,7 @@ class CharacterWidget extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.25,
             child: GestureDetector(
-              onTap: () async {
+              onTap: () {
                 CharacterManager.deleteCharacter(uid, id);
               },
               child: Icon(

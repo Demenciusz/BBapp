@@ -27,12 +27,16 @@ class CharacterRow extends StatelessWidget {
           ),
           Expanded(
             flex: 2,
-            child: Text(mapValue),
+            child: Text(
+              mapValue,
+              style: TextStyle(fontSize: 15, color: Colors.black54),
+            ),
           ),
           GestureDetector(
             child: Icon(
               Icons.delete,
               size: 40,
+              color: Colors.red,
             ),
             onTap: fun,
           ),

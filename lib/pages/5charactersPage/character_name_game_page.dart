@@ -70,8 +70,8 @@ class CharacterNameGamePage extends StatelessWidget {
               ),
               InkWell(
                 onTap: (() {
-                  if (nameController.text.length > 3 &&
-                      gameController.text.length > 3) {
+                  if (nameController.text.length >= 2 &&
+                      gameController.text.length >= 1) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
