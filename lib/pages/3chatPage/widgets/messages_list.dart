@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/pages/3chatPage/widgets/message_widget.dart';
 
@@ -18,7 +17,6 @@ class _MessagesListState extends State<MessagesList> {
   late final ScrollController controller;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = ScrollController();
   }

@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/page/page_cubit.dart';
-import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/domain/photo_manager.dart';
-import 'package:zaliczenie/domain/profile_manager.dart';
+
 import 'package:zaliczenie/pages/2profilePage/widgets/profileInfo.dart';
 
 import 'package:zaliczenie/pages/2profilePage/widgets/profilePhoto.dart';

@@ -36,5 +36,9 @@ class DiceCubit extends Cubit<DiceState> {
     }
   }
 
+  void animation() {
+    emit(DiceAnimation());
+  }
+
   void rollDice() {}
 }

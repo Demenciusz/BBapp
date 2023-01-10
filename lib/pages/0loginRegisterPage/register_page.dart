@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/firebase_auth_controller.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/widgets/dropdownbutton.dart';
@@ -36,6 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
           setState(() {
             day = value;
           });
+          return null;
         }),
       );
     } else if (month == 2) {
@@ -48,6 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
             setState(() {
               day = value;
             });
+            return null;
           }),
         );
       } else {
@@ -59,6 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
             setState(() {
               day = value;
             });
+            return null;
           }),
         );
       }
@@ -71,6 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
           setState(() {
             day = value;
           });
+          return null;
         }),
       );
     }
@@ -169,6 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 month = value;
                                 day = 1;
                               });
+                              return null;
                             })),
                       )
                     ],
@@ -195,6 +199,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               setState(() {
                                 year = value;
                               });
+                              return null;
                             })),
                       )
                     ],

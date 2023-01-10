@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
 
-import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
-
 class MeanFieldManager {
   List<int> k4List = [];
   List<int> k6List = [];
@@ -26,7 +24,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k6:
         int x = k6List.length;
         double sum = 0;
@@ -38,7 +36,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k8:
         int x = k8List.length;
         double sum = 0;
@@ -50,7 +48,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k10:
         int x = k10List.length;
         double sum = 0;
@@ -62,7 +60,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k12:
         int x = k12List.length;
         double sum = 0;
@@ -74,7 +72,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k20:
         int x = k20List.length;
         double sum = 0;
@@ -86,7 +84,7 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
+
       case CurrentDice.k100:
         int x = k20List.length;
         double sum = 0;
@@ -98,7 +96,6 @@ class MeanFieldManager {
         } else {
           return (sum / x);
         }
-        break;
     }
   }
 
@@ -112,43 +109,42 @@ class MeanFieldManager {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k6:
         k6List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k8:
         k8List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k10:
         k10List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k12:
         k12List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k20:
         k20List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
+
       case CurrentDice.k100:
         k100List.forEach((element) {
           rolls += ' $element :';
         });
         return rolls;
-        break;
     }
   }
 

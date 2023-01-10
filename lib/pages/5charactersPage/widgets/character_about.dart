@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/characters/characters_about_cubit.dart';
 import 'package:zaliczenie/cubit/characters/characters_state.dart';
-import 'package:zaliczenie/cubit/characters/characters_stats_cubit.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character_row.dart';
 
 class CharacterAbout extends StatelessWidget {
@@ -85,6 +84,7 @@ class CharacterAbout extends StatelessWidget {
             bool b = BlocProvider.of<CharactersAboutCubit>(context)
                 .addToMap(keyController.text, valueController.text);
             if (b) {
+              FocusManager.instance.primaryFocus?.unfocus();
               keyController.clear();
               valueController.clear();
             }

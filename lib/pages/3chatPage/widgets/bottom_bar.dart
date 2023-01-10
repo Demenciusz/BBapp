@@ -19,7 +19,6 @@ class _BottomBarState extends State<BottomBar> {
   late final TextEditingController controller;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = TextEditingController();
   }

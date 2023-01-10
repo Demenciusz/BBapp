@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zaliczenie/cubit/page/page_cubit.dart';
+
 import 'package:zaliczenie/cubit/photo/photo_cubit.dart';
 import 'package:zaliczenie/cubit/photo/photo_state.dart';
 import 'package:zaliczenie/domain/profile_manager.dart';

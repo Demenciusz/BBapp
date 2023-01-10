@@ -30,7 +30,7 @@ class _DicePageState extends State<DicePage>
     detector = ShakeDetector.autoStart(
       onPhoneShake: () {
         print('eeee');
-        BlocProvider.of<DiceCubit>(context).emit(DiceAnimation());
+        BlocProvider.of<DiceCubit>(context).animation();
       },
       shakeSlopTimeMS: 1000,
     );

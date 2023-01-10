@@ -1,12 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zaliczenie/cubit/characters/characters_about_cubit.dart';
 import 'package:zaliczenie/cubit/characters/characters_eq_cubit.dart';
 import 'package:zaliczenie/cubit/characters/characters_skills_cubit.dart';
-import 'package:zaliczenie/cubit/characters/characters_state.dart';
 import 'package:zaliczenie/cubit/characters/characters_stats_cubit.dart';
 import 'package:zaliczenie/cubit/characters/characters_weapons_cubit.dart';
+import 'package:zaliczenie/domain/characters_manager.dart';
 import 'package:zaliczenie/domain/id_time.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character_about.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character_eq.dart';
@@ -16,9 +15,15 @@ import 'package:zaliczenie/pages/5charactersPage/widgets/character_stats.dart';
 import 'package:zaliczenie/pages/5charactersPage/widgets/character_weapons.dart';
 
 class AddCharacter extends StatefulWidget {
-  const AddCharacter({super.key, required this.name, required this.game});
+  const AddCharacter({
+    super.key,
+    required this.name,
+    required this.game,
+    required this.uid,
+  });
   final String name;
   final String game;
+  final String uid;
 
   @override
   State<AddCharacter> createState() => _AddCharacterState();
@@ -52,9 +57,20 @@ class _AddCharacterState extends State<AddCharacter> {
             child: InkWell(
               onTap: (() {
                 String id = IdTime.idByTime();
-
+                CharacterManager.addCharacter(
+                    widget.uid, widget.game, widget.name, id);
                 BlocProvider.of<CharactersAboutCubit>(context)
-                    .saveCharacter(id);
+                    .saveCharacter(id, widget.uid);
+                BlocProvider.of<CharactersStatsCubit>(context)
+                    .saveCharacter(id, widget.uid);
+                BlocProvider.of<CharactersSkillsCubit>(context)
+                    .saveCharacter(id, widget.uid);
+                BlocProvider.of<CharactersEqCubit>(context)
+                    .saveCharacter(id, widget.uid);
+                BlocProvider.of<CharactersWeaponsCubit>(context)
+                    .saveCharacter(id, widget.uid);
+                Navigator.pop(context);
+                Navigator.pop(context);
               }),
               child: Icon(
                 Icons.save,

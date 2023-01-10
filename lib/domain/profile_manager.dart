@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:zaliczenie/domain/photo_manager.dart';
 
 class ProfileMenager {
   Future<FilePickerResult?> pickPhoto() async {
-    PhotoManager photoManager = PhotoManager();
     final profilePhoto = await FilePicker.platform.pickFiles(
         allowMultiple: false,
         type: FileType.custom,

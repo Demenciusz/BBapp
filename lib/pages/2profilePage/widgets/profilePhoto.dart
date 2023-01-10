@@ -4,9 +4,9 @@ import 'package:zaliczenie/domain/photo_manager.dart';
 class ProfilePhoto extends StatelessWidget {
   ProfilePhoto({required this.width, required this.uid});
 
-  double width;
-  String uid;
-  PhotoManager photoStorage = PhotoManager();
+  final double width;
+  final String uid;
+  final PhotoManager photoStorage = PhotoManager();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

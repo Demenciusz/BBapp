@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zaliczenie/domain/characters_manager.dart';
+import 'package:zaliczenie/pages/5charactersPage/view_character.dart';
 
 class CharacterWidget extends StatelessWidget {
   const CharacterWidget({
@@ -24,7 +25,13 @@ class CharacterWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onLongPress: () {},
+            onLongPress: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => ViewCharacter(
+                          id: id, uid: uid, name: name, game: game))));
+            },
             child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.25,
                 child: Text(

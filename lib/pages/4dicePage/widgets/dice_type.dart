@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zaliczenie/cubit/dice/dice_cubit.dart';
 
 class DiceType extends StatelessWidget {
   const DiceType({

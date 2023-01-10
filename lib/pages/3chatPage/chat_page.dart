@@ -1,8 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:zaliczenie/domain/chat_manager.dart';
 import 'package:zaliczenie/pages/3chatPage/widgets/bottom_bar.dart';
-import 'package:zaliczenie/pages/3chatPage/widgets/message_widget.dart';
 import 'package:zaliczenie/pages/3chatPage/widgets/messages_list.dart';
 import 'package:zaliczenie/pages/widgets/drawer.dart';
 

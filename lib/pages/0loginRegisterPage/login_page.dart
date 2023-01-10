@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
+
 import 'package:zaliczenie/domain/firebase_auth_controller.dart';
 import 'package:zaliczenie/pages/0loginRegisterPage/register_page.dart';
 import 'package:zaliczenie/pages/widgets/textbutton.dart';
 import 'package:zaliczenie/pages/widgets/textfield.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  LoginPage({Key? key}) : super(key: key);
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final textcontroller = TextEditingController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  final passwordController = TextEditingController();
+
+  final textcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

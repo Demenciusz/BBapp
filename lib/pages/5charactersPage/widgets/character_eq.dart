@@ -9,7 +9,7 @@ class CharacterEq extends StatelessWidget {
   CharacterEq({super.key});
   final TextEditingController keyController = TextEditingController();
   final TextEditingController valueController = TextEditingController();
-  List<CharacterRow> characterRowList = [];
+  final List<CharacterRow> characterRowList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +82,7 @@ class CharacterEq extends StatelessWidget {
             bool b = BlocProvider.of<CharactersEqCubit>(context)
                 .addToMap(keyController.text, valueController.text);
             if (b) {
+              FocusManager.instance.primaryFocus?.unfocus();
               keyController.clear();
               valueController.clear();
             }
