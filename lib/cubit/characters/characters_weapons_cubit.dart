@@ -11,7 +11,8 @@ class CharactersWeaponsCubit extends Cubit<CharactersState> {
   }
 
   bool addToMap(String key, String value) {
-    if ((state as CharactersData).map.containsKey(key)) {
+    if ((state as CharactersData).map.containsKey(key) &&
+        (state as CharactersData).map.containsValue(value)) {
       return false;
     } else {
       Map<String, String> map = takeMap;
