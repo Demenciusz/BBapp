@@ -15,12 +15,15 @@ class CharactersAboutCubit extends Cubit<CharactersState> {
         (state as CharactersData).map.containsValue(value)) {
       return false;
     } else {
-      Map<String, String> map = takeMap;
-      print(map);
-      map[key] = value;
-      print(map);
-      emit(CharactersData(map));
-      return true;
+      if (key != '') {
+        Map<String, String> map = takeMap;
+        print(map);
+        map[key] = value;
+        print(map);
+        emit(CharactersData(map));
+        return true;
+      }
+      return false;
     }
   }
 

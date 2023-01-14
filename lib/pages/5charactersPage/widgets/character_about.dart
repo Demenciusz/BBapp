@@ -84,6 +84,8 @@ class CharacterAbout extends StatelessWidget {
             bool b = BlocProvider.of<CharactersAboutCubit>(context)
                 .addToMap(keyController.text, valueController.text);
             if (b) {
+              print('COntroller.text:');
+              print(keyController.text);
               FocusManager.instance.primaryFocus?.unfocus();
               keyController.clear();
               valueController.clear();
